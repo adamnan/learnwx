@@ -1,18 +1,29 @@
 #! /usr/bin/env python
 
 #This app will not run because something is missing from line 4. Do you know what it is?
+import wx
 
+def OnLike(e):
+	print"Great! Me Too!"
+	
+def OnDontLike(e):
+	print"Aww, Too Bad!"
 
 app = wx.App(False)
 frame = wx.Frame(None, wx.ID_ANY, "This is Lesson 3")
 panel = wx.Panel(frame)
 
 #Here is something new. I bet you can figure out what it does.
-heading = wx.StaticText(panel, label='This is a StaticText Label', pos=(130, 15))
+heading = wx.StaticText(panel, label = 'This is a StaticText Label', pos = (130, 15))
+moreHeading = wx.StaticText(panel, label = 'There\'s more StaticText Label', pos = (110, 65))
 
-btnLike = wx.Button(panel, label="I Like Static Text", pos=(100,30), size=(200,20))
+wx.StaticLine(panel, pos = (100, 60), size = (220, 2))
 
+btnLike = wx.Button(panel, label = "I Like Static Text", pos = (100, 30), size = (200, 20))
+btnDontLike = wx.Button(panel, label = "I Don't Like Static Text.", pos = (100, 80), size = (200, 20))
 
+btnLike.Bind(wx.EVT_BUTTON, OnLike)
+btnDontLike.Bind(wx.EVT_BUTTON, OnDontLike)
 
 frame.Show()
 
