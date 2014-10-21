@@ -8,26 +8,30 @@ import wx
 
 
 #This function is an event handler. It will run when a certain even occurs.
-def OnClickMe(e):
+def OnDontClickMe(e):
 	print "Yay! You clicked it."
 
+def OnClickMe(e):
+	print "No! You clicked it."
 #----Main Program Below-----
 
 #In wx we always sart by creating a wx.App. I like to call it "app".
 app = wx.App(False)
 
 #Create a new frame.
-frame = wx.Frame(None, wx.ID_ANY, "Josh's Title")
+frame = wx.Frame(None, wx.ID_ANY, "Adam's Title", size = (500,400), pos = (750, 200))
 
 #Create a new panel
 #A panel is not a whole frame, it is just a smaller collection of things inside the frame.
 panel = wx.Panel(frame)
 
 #Create a button, and put it in my panel
-btnClickMe = wx.Button(panel, label="Click Me", pos=(20,20), size=(200,20))
+btnDontClickMe = wx.Button(panel, label="Don't Click Me", pos=(150,20), size=(200,50))
+btnClickMe = wx.Button(panel, label="Click Me", pos=(150,100), size=(200,50))
 
 #Make the button do something!
-#btnClickMe.Bind(wx.EVT_BUTTON, OnClickMe)
+btnDontClickMe.Bind(wx.EVT_BUTTON, OnDontClickMe)
+btnClickMe.Bind(wx.EVT_BUTTON, OnClickMe)
 
 #Show the frame
 frame.Show()
